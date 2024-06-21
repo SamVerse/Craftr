@@ -1,9 +1,14 @@
 ## craftr 
 Stack: Utilizes React.js for frontend development and Appwrite as the backend as a service.
+
 Authentication: Secure user authentication system implemented for user accounts.
+
 Post Management: Users can easily create, update, and delete posts within the platform.
+
 Community Interaction: Enables users to view and interact with posts created by others.
+
 Real-time Updates: Leveraging Appwrite's capabilities for real-time data updates and storage.
+
 Customizability: Offers customization options for users to personalize their blogging experience.
 
 
