@@ -47,11 +47,12 @@ function Home() {
       return (
         <div className="w-full mt-12 text-center text-white h-auto">
           <Container>
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap h-screen">
               <div className="p-2 w-full">
-                <h1 className="text-4xl font-bold h-screen hover:text-gray-400">
+                <h1 className="text-4xl font-bold hover:text-gray-400">
                   No posts available. Create your first post! 📝
                 </h1>
+                <h3 className="font-semibold pt-3 text-base text-gray-400">Please refresh if you have already made a post and it is not visible..Be patient (;</h3>
               </div>
             </div>
           </Container>
