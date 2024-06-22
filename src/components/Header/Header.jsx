@@ -28,7 +28,7 @@ function Header() {
             active: !authStatus,
         },
         {
-            name: "All Posts",
+            name: "Global Feed",
             slug: "/all-posts",
             active: authStatus,
         },
@@ -80,7 +80,7 @@ function Header() {
                                 <li key={item.name}>
                                     <button 
                                     onClick= {() => navigate(item.slug)}
-                                    className='inline-bock px-6 flex-wrap flex py-2 duration-200 hover:bg-black rounded-full'
+                                    className='inline-bock px-6 flex-wrap flex py-2 duration-200 hover:underline hover:bg-black rounded-full'
                                     >{item.name}</button>
                                 </li>
                             ) : null 

@@ -92,10 +92,11 @@ function Home() {
         <div className="w-full mt-12 text-center text-white h-auto">
           <Container>
             <div className="flex flex-wrap">
-              <div className="p-2 w-full">
-                <h1 className="text-4xl font-bold h-screen hover:text-gray-400">
+              <div className="p-2 w-[80%] flex flex-col gap-10 mx-auto h-screen">
+                <h1 className="text-4xl font-bold hover:text-gray-400">
                   Login to read posts 😎
                 </h1>
+                <div className="text-lg text-white">"Hi guys, I am Sameer Singh and i have made craftr 🎨️️️️️️️, A Blogging website to share your thoughts and stories through visual posts 📸, Sign up or log in to start exploring and showcasing your creativity, and if you have any suggestions or feedbacks u can contact me through my linkedin!" </div>
               </div>
             </div>
           </Container>
