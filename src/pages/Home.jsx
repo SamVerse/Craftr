@@ -11,21 +11,23 @@ function Home() {
 
   useEffect(() => {
     setLoading(true);
-    appwriteService.getAllPosts()
-    .then((posts) => {
-      if (posts && posts.documents) {
-        const userPosts = posts.documents.filter((post) => post.userId === userId);
-        setPosts(userPosts);
-      } else {
-        console.log("No posts found or unexpected response structure");
-        setPosts([]);
-      }
-    }).finally(() => {
-      setLoading(false)
-    })
-
-
-  }, [userId ,authStatus]);
+    appwriteService
+      .getAllPosts()
+      .then((posts) => {
+        if (posts && posts.documents) {
+          const userPosts = posts.documents.filter(
+            (post) => post.userId === userId
+          );
+          setPosts(userPosts);
+        } else {
+          console.log("No posts found or unexpected response structure");
+          setPosts([]);
+        }
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [userId, authStatus]);
 
   if (loading) {
     return (
@@ -52,7 +54,10 @@ function Home() {
                 <h1 className="text-4xl font-bold hover:text-gray-400">
                   No posts available. Create your first post! 📝
                 </h1>
-                <h3 className="font-semibold pt-3 text-base text-gray-400">Please refresh if you have already made a post and it is not visible..Be patient (;</h3>
+                <h3 className="font-semibold pt-3 text-base text-gray-400">
+                  Please refresh if you have already made a post and it is not
+                  visible..Be patient (;
+                </h3>
               </div>
             </div>
           </Container>
@@ -78,13 +83,20 @@ function Home() {
   return (
     <div className="w-full h-screen py-8 bg-slate-900">
       <Container>
-        <div className="text-white mb-11 font-medium text-[20px] underline">Your posts</div>
-        <div className="flex flex-wrap]">
-          {posts.map((post) => (
-            <div key={post.$id} className="p-2 w-1/4">
-              <PostCard {...post} />
-            </div>
-          ))}
+        <div className="flex flex-col items-center w-full h-screen">
+          <div className="text-white mb-7 font-medium text-[20px] underline">
+            Your posts
+          </div>
+          <div className="md:flex md:flex-wrap mb-8 w-full overflow-x-auto">
+            {posts.map((post) => (
+              <div
+                key={post.$id}
+                className="sm:flex-shrink-0 mb-3 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2"
+              >
+                <PostCard {...post} />
+              </div>
+            ))}
+          </div>
         </div>
       </Container>
     </div>

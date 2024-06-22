@@ -59,9 +59,9 @@ function Header() {
     }, [authStatus] );
 
     return (
-        <header className='py-3 shadow rounded-t-2xl bg-blue-950'>
+        <header className='py-3 shadow rounded-t-2xl bg-blue-950 '>
             <Container>
-                <nav className='flex items-center'>
+                <nav className='flex items-center flex-wrap'>
                     <div className='mr-4 text-white'>
                         <Link to='/'>
                             <Logo width='70px'/>
@@ -74,13 +74,13 @@ function Header() {
                         <div className='underline text-[15px]'>{email}</div>
                     </div>
                 )}
-                    <ul className='flex ml-auto text-white'> 
+                    <ul className='flex ml-auto flex-wrap items-center justify-center  text-white'> 
                         {navItems.map((item, index) => 
                             item.active ? (
                                 <li key={item.name}>
                                     <button 
                                     onClick= {() => navigate(item.slug)}
-                                    className='inline-bock px-6 py-2 duration-200 hover:bg-black rounded-full'
+                                    className='inline-bock px-6 flex-wrap flex py-2 duration-200 hover:bg-black rounded-full'
                                     >{item.name}</button>
                                 </li>
                             ) : null 

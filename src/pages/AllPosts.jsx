@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Container, PostCard } from "../components";
 import appwriteService from "../appwrite/config";
 
-
 function AllPosts() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -31,9 +30,9 @@ function AllPosts() {
 
   if (posts.length == 0) {
     return (
-        <div className="flex flex-wrap">
-          <div className="p-2 w-full flex items-center h-screen justify-center flex-col gap-7">
-            <h1 className="text-4xl font-bold text-white">No posts found...</h1>
+      <div className="flex flex-wrap">
+        <div className="p-2 w-full flex items-center h-screen justify-center flex-col gap-7">
+          <h1 className="text-4xl font-bold text-white">No posts found...</h1>
         </div>
       </div>
     );
@@ -42,12 +41,17 @@ function AllPosts() {
   return (
     <div className="w-full py-8 bg-slate-900 h-screen">
       <Container>
-        <div className="flex flex-wrap ">
-          {posts.map((post) => (
-            <div key={post.$id} className="p-2 w-1/4">
-              <PostCard {...post} />
-            </div>
-          ))}
+        <div className="flex flex-col items-center w-full h-screen">
+          <div className="md:flex md:flex-wrap mb-8 w-full overflow-x-auto">
+            {posts.map((post) => (
+              <div
+                key={post.$id}
+                className="sm:flex-shrink-0 mb-3 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2"
+              >
+                <PostCard {...post} />
+              </div>
+            ))}
+          </div>
         </div>
       </Container>
     </div>
