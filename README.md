@@ -1,5 +1,5 @@
-## craftr 
-Stack: Utilizes React.js for frontend development and Appwrite as the backend as a service.
+# craftr 
+### Stack: Utilizes React.js for frontend development and Appwrite as the backend as a service.
 
 Authentication: Secure user authentication system implemented for user accounts.
 
@@ -15,7 +15,7 @@ Customizability: Offers customization options for users to personalize their blo
 
 ## "Make sure to star the repository if u appreciate the work i have done here.."
 
-# React + Vite
+### React + Vite
 
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
