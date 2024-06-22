@@ -25,7 +25,7 @@ function Home() {
     })
 
 
-  }, [userId]);
+  }, [userId ,authStatus]);
 
   if (loading) {
     return (
