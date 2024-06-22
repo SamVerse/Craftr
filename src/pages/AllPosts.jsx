@@ -42,13 +42,22 @@ function AllPosts() {
     <div className="w-full py-8 bg-slate-900 h-screen">
       <Container>
         <div className="flex flex-col items-center w-full h-screen">
-          <div className="md:flex md:flex-wrap mb-8 w-full overflow-x-auto">
+          <div className="mb-8 w-full overflow-x-auto">
             {posts.map((post) => (
-              <div
-                key={post.$id}
-                className="sm:flex-shrink-0 mb-3 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2"
-              >
-                <PostCard {...post} />
+              <div key={post.$id} className="mb-3 w-full p-2">
+                <div className="flex flex-col gap-2 mb-3 items-center px-2 justify-between w-full">
+                  <div className="flex-grow w-[90%] h-[80%]">
+                    <PostCard {...post} />
+                  </div>
+                  <div className="text-white md:flex flex-col justify-around w-full font-light text-sm md:text-lg ml-4 ">
+                    <span>
+                      Created on{" "}
+                      {new Date(post.$createdAt).toLocaleDateString()} <br />
+                    </span>
+                    <span className="font-medium">by {post.authorName || "Unknown Author"}</span>
+                    
+                  </div>
+                </div>
               </div>
             ))}
           </div>

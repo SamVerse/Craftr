@@ -2,20 +2,34 @@ import React, { useEffect, useState } from "react";
 import appwriteService from "../appwrite/config";
 import { Container, PostCard } from "../components";
 import { useSelector } from "react-redux";
+import fetchUser from "../appwrite/auth";
+import { Link } from "react-router-dom";
+import Button from "../components/Button";
 
 function Home() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const authStatus = useSelector((state) => state.auth.status);
   const userId = useSelector((state) => state.auth.userData?.$id);
+  const [userName, setUserName] = useState("");
+
+
+  const deletePost = () => {
+    appwriteService.deletePost(post.$id).then((status) => {
+      if (status) {
+        appwriteService.deleteFile(post.featuredImage);
+        navigate("/");
+      }
+    });
+  };
 
   useEffect(() => {
     setLoading(true);
-    appwriteService
-      .getAllPosts()
-      .then((posts) => {
-        if (posts && posts.documents) {
-          const userPosts = posts.documents.filter(
+
+    Promise.all([appwriteService.getAllPosts(), fetchUser.getCurrentUser()])
+      .then(([postsResponse, userResponse]) => {
+        if (postsResponse && postsResponse.documents) {
+          const userPosts = postsResponse.documents.filter(
             (post) => post.userId === userId
           );
           setPosts(userPosts);
@@ -23,6 +37,16 @@ function Home() {
           console.log("No posts found or unexpected response structure");
           setPosts([]);
         }
+
+        if (userResponse) {
+          setUserName(userResponse.name);
+        } else {
+          console.log("User information not found");
+          setUserName("");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       })
       .finally(() => {
         setLoading(false);
@@ -82,18 +106,68 @@ function Home() {
 
   return (
     <div className="w-full h-screen py-8 bg-slate-900">
-      <Container>
+      {/* <Container>
         <div className="flex flex-col items-center w-full h-screen">
           <div className="text-white mb-7 font-medium text-[20px] underline">
-            Your posts
+          Your shares
           </div>
-          <div className="md:flex md:flex-wrap mb-8 w-full overflow-x-auto">
+          <div className=" mb-8 w-full overflow-x-auto">
             {posts.map((post) => (
               <div
                 key={post.$id}
-                className="sm:flex-shrink-0 mb-3 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2"
+                className="sm:flex-shrink-0  mb-3 w-full  p-2"
               >
+                <div className="flex md:min-w-[30vw] items-center justify-between">
                 <PostCard {...post} />
+                <div className="text-white text-sm md:text-lg w-full">Created on {new Date(post.$createdAt).toLocaleDateString()}</div>
+              
+                </div>
+                </div>
+            ))}
+          </div>
+        </div>
+      </Container> */}
+      <Container>
+        <div className="flex flex-col items-center w-full h-screen">
+          <div className="text-white mb-7 font-medium text-[20px] underline">
+            Your shares
+          </div>
+          <div className="mb-8 w-full overflow-x-auto">
+            {posts.map((post) => (
+              <div key={post.$id} className="mb-3 w-full p-2">
+                <div className="flex gap-2 items-center px-2 justify-between w-full">
+                  <div className="flex-grow md:w-[40%]">
+                    <PostCard {...post} />
+                  </div>
+                  <div className="text-white w-[80%] font-light text-sm md:text-lg ml-4 ">
+                    <span>
+                      Created on{" "}
+                      {new Date(post.$createdAt).toLocaleDateString()} <br />
+                    </span>
+                    <span className="text-[9px] ml-auto md:text-[12px]">
+                      at {new Date(post.$createdAt).toLocaleTimeString()}{" "}
+                    </span>
+                  </div>
+                  <div className="update hidden md:block">
+                    <div className="flex">
+                      <Link to={`/edit-post/${post.$id}`}>
+                        <Button
+                          bgColor="bg-green-700"
+                          className="mr-3 hover:bg-green-900"
+                        >
+                          Edit
+                        </Button>
+                      </Link>
+                      <Button
+                        bgColor="bg-red-700"
+                        className="hover:bg-red-900"
+                        onClick={deletePost}
+                      >
+                        Delete
+                      </Button>
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

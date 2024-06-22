@@ -8,7 +8,7 @@ import authService from "../appwrite/auth";
 
 export default function Post() {
   const [loading, setLoading] = useState(true);
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [post, setPost] = useState(null);
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -36,12 +36,7 @@ export default function Post() {
     } else navigate("/");
   }, [slug, navigate]);
 
-
-
-  const [authorName, setAuthorName] = useState('');
-
-
-    
+  const [authorName, setAuthorName] = useState("");
 
   const deletePost = () => {
     appwriteService.deletePost(post.$id).then((status) => {
@@ -63,8 +58,13 @@ export default function Post() {
   return post ? (
     <div className="py-8 bg-slate-900 text-white">
       <Container>
-        <div className="flex pr-4 items-center justify-end">
-        <span>Created on {new Date(post.$createdAt).toLocaleDateString()}</span>
+        <div className="flex pr-4 items-center justify-between">
+          <span>
+            Created on {new Date(post.$createdAt).toLocaleDateString()} <br />
+          </span>
+          <span className="sm:text-[4px] ml-auto md:text-[12px]">
+            at {new Date(post.$createdAt).toLocaleTimeString()}{" "}
+          </span>
         </div>
         <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
           <img
@@ -76,11 +76,18 @@ export default function Post() {
           {isAuthor && (
             <div className="absolute right-6 top-6">
               <Link to={`/edit-post/${post.$id}`}>
-                <Button bgColor="bg-green-700" className="mr-3 hover:bg-green-900">
+                <Button
+                  bgColor="bg-green-700"
+                  className="mr-3 hover:bg-green-900"
+                >
                   Edit
                 </Button>
               </Link>
-              <Button bgColor="bg-red-700" className="hover:bg-red-900" onClick={deletePost}>
+              <Button
+                bgColor="bg-red-700"
+                className="hover:bg-red-900"
+                onClick={deletePost}
+              >
                 Delete
               </Button>
             </div>
@@ -90,8 +97,9 @@ export default function Post() {
           <h1 className="text-2xl font-bold">{post.title}</h1>
         </div>
         <div className="browser-css">{parse(post.content)}</div>
-        <div className="text-center text-xl font-semibold pt-7">Created by: {post.authorName || 'Unknown Author'}
-            </div>
+        <div className="text-center text-xl font-semibold pt-7">
+          Created by: {post.authorName || "Unknown Author"}
+        </div>
       </Container>
     </div>
   ) : null;

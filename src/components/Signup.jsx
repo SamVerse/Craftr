@@ -85,6 +85,7 @@ function Signup() {
                 required: true,
               })}
             />
+        <div className="text-gray-500">** If you forget your credentials contact the admin, as we don't have reset password feature yet.. **</div>
             <Button type="submit" className="w-full">
               Create Account
             </Button>
