@@ -13,7 +13,7 @@ Customizability: Offers customization options for users to personalize their blo
 
 Responsive: This is a responsive Website to almost all the available screens i could make it for (:
 
-##"Make sure to star the repository if u appreciate the work i have done here.."
+## "Make sure to star the repository if u appreciate the work i have done here.."
 
 # React + Vite
 
