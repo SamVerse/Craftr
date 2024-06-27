@@ -70,15 +70,17 @@ export default function Post() {
           <img
             src={appwriteService.getFilePreview(post.featuredImage)}
             alt={post.title}
-            className="rounded-xl"
+            className="rounded-xl md:w-[70%] w-full"
           />
 
           {isAuthor && (
-            <div className="absolute right-6 top-6">
+            <div className="absolute right-6 top-6 md:text-[14px] text-sm" >
               <Link to={`/edit-post/${post.$id}`}>
                 <Button
                   bgColor="bg-green-700"
                   className="mr-3 hover:bg-green-900"
+                  paddingX="px-1"
+                  paddingY="py-1"
                 >
                   Edit
                 </Button>
@@ -87,6 +89,8 @@ export default function Post() {
                 bgColor="bg-red-700"
                 className="hover:bg-red-900"
                 onClick={deletePost}
+                paddingX="px-1"
+                  paddingY="py-1"
               >
                 Delete
               </Button>

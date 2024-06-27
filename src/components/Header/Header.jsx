@@ -61,7 +61,7 @@ function Header() {
     return (
         <header className='py-3 shadow rounded-t-2xl bg-blue-950 '>
             <Container>
-                <nav className='flex items-center flex-wrap'>
+                <nav className='flex items-center flex-wrap justify-center md:justify-start'>
                     <div className='mr-4 text-white'>
                         <Link to='/'>
                             <Logo width='70px'/>

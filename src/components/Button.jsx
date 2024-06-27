@@ -6,10 +6,12 @@ export default function Button({
     bgColor = "bg-blue-600",
     textColor = "text-white",
     className = "",
+    paddingX = "px-4",
+    paddingY = "py-2",
     ...props
 }) {
     return (
-        <button className={`px-4 py-2 rounded-lg ${bgColor} ${textColor} ${className}`} {...props}>
+        <button className={`md:py-2 md:px-4 ${paddingX} ${paddingY} rounded-lg ${bgColor} ${textColor} ${className}`} {...props}>
             {children}
         </button>
     );

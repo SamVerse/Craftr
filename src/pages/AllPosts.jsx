@@ -46,7 +46,7 @@ function AllPosts() {
             {posts.map((post) => (
               <div key={post.$id} className="mb-3 w-full p-2">
                 <div className="flex flex-col gap-2 mb-3 items-center px-2 justify-between w-full">
-                  <div className="flex-grow w-[90%] h-[80%]">
+                  <div className="flex-grow h-[90%] md:w-[50%]">
                     <PostCard {...post} />
                   </div>
                   <div className="text-white md:flex flex-col justify-around w-full font-light text-sm md:text-lg ml-4 ">

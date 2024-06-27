@@ -13,7 +13,6 @@ function Home() {
   const userId = useSelector((state) => state.auth.userData?.$id);
   const [userName, setUserName] = useState("");
 
-
   const deletePost = () => {
     appwriteService.deletePost(post.$id).then((status) => {
       if (status) {
@@ -92,11 +91,29 @@ function Home() {
         <div className="w-full mt-12 text-center text-white h-auto">
           <Container>
             <div className="flex flex-wrap">
-              <div className="p-2 w-[80%] flex flex-col gap-10 mx-auto h-screen">
+              <div className="p-2 w-[80%] flex flex-col gap-10 mx-auto h-screen overflow-x-auto">
                 <h1 className="text-4xl font-bold hover:text-gray-400">
                   Login to read posts 😎
                 </h1>
-                <div className="text-lg text-white">"Hi guys, I am Sameer Singh and i have made craftr 🎨️️️️️️️, A Blogging website to share your thoughts and stories through visual posts 📸, Sign up or log in to start exploring and showcasing your creativity, and if you have any suggestions or feedbacks u can contact me through my linkedin!" </div>
+                <div className="text-lg text-white">
+                  "Hi guys, I am Sameer Singh and i have made craftr 🎨️️️️️️️,
+                  A Blogging website to share your thoughts and stories through
+                  visual posts 📸, Sign up or log in to start exploring and
+                  showcasing your creativity, ( it's responsive for smaller screens as well ) and if you have any suggestions or
+                  feedbacks u can contact me through my linkedin!"{" "}
+                </div>
+                <div className="pt-3 flex-col items-start  flex gap-1">
+                  <span className="text-4xl font-semibold">Want to know how to use?</span>
+                  <span className="text-lg pb-3 underline">It's quite Simple actually:</span>
+                  <span>1) SIGNUP.. Create your account (Be sure to remember your credentials afterwards)</span>
+                  <span className="py-4">AND THAT'S IT YOU WILL THEN BE ABLE TO SEE THE MAIN CONTENT !!</span>
+                  <span>2) <span className="text-[20px]"> U have now gained access to: </span> </span>
+                  <span> <span className="font-extrabold text-base text-yellow-400">Home </span>, where you can see and edit posts made by you.</span>
+                  <span> <span className="font-extrabold text-base text-pink-300">Global Feed</span> where you can see posts made by others including yours.  </span> 
+                  <span> <span className="font-extrabold text-base text-emerald-500">Add posts </span> this is from where u can create posts. </span>
+                  <span> ( The editor used here is not the normal text editor its from Tinymce, which offers quite a lot of formatting tools. ) </span>
+                </div>
+                <div className="font-bold text-xl">I hope you will like it.. ;)</div>
               </div>
             </div>
           </Container>
