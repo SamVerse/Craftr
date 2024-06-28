@@ -1,4 +1,7 @@
 # craftr 
+Link of the deployed website : 
+https://craftr-zeta.vercel.app/
+
 ### Stack: Utilizes React.js for frontend development and Appwrite as the backend as a service.
 
 Authentication: Secure user authentication system implemented for user accounts.  
